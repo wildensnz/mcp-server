@@ -1,0 +1,62 @@
+{
+  "name": "store-mcp",
+  "version": "0.1.0",
+  "description": "MCP server exposing a Dominican distributor database (Colmado Digital) as read-only tools for Claude",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "inspect": "npm run build && npx @modelcontextprotocol/inspector node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wildensnz/mcp-server.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "postgresql",
+    "typescript"
+  ],
+  "author": "Wilden Sanchez",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/wildensnz/mcp-server/issues"
+  },
+  "homepage": "https://github.com/wildensnz/mcp-server#readme",
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.3.1",
+    "pg": "^8.23.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.4",
+    "@types/pg": "^8.23.1",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.1",
+    "vitest": "^5.0.3"
+  },
+  "bin": {
+    "store-mcp": "dist/index.js"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
+}
