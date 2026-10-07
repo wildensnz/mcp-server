@@ -96,7 +96,7 @@ Env: `DATABASE_URL` (rol `askdb_reader`, la misma de Ask Your DB).
 ## Verificación
 
 - `npm run check` verde.
-- `npm run inspect` abre MCP Inspector: aparecen las 6 tools y el resource; `search_customers` con `query: "ferre"` devuelve filas.
+- `npm run inspect` abre MCP Inspector: aparecen las 6 tools y el resource; `search_customers` con `query: "reyes"` devuelve filas.
 - En Claude Desktop: "¿Qué productos están por agotarse?" → llama `low_stock_products` y responde con la lista; "Ventas por mes de este año" → `sales_report` con `groupBy: month`.
 - `get_order` con id inexistente → respuesta `isError` clara, el servidor no se cae.
 - Entrada inválida (`limit: 500`) → rechazada por zod con mensaje.

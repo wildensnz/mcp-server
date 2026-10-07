@@ -25,7 +25,8 @@ export function getDatabaseUrl(): string {
 }
 
 export function getPool(): pg.Pool {
-  pool ??= new pg.Pool({
+  if (pool) return pool;
+  pool = new pg.Pool({
     connectionString: getDatabaseUrl(),
     application_name: 'store-mcp',
     max: 3,
@@ -33,6 +34,7 @@ export function getPool(): pg.Pool {
     query_timeout: STATEMENT_TIMEOUT_MS + 2000,
     connectionTimeoutMillis: 10_000,
     idleTimeoutMillis: 30_000,
+    allowExitOnIdle: true,
   });
   pool.on('error', (error) => {
     console.error('pg pool error:', error.message);

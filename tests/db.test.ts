@@ -21,6 +21,7 @@ describe('db', () => {
     PoolMock.mockClear();
     poolQuery.mockReset();
     poolEnd.mockClear();
+    poolOn.mockClear();
     process.env.DATABASE_URL = 'postgresql://askdb_reader:x@host/db';
   });
 
@@ -48,6 +49,7 @@ describe('db', () => {
     const b = getPool();
     expect(a).toBe(b);
     expect(PoolMock).toHaveBeenCalledTimes(1);
+    expect(poolOn).toHaveBeenCalledTimes(1);
     expect(PoolMock).toHaveBeenCalledWith(
       expect.objectContaining({
         connectionString: 'postgresql://askdb_reader:x@host/db',
